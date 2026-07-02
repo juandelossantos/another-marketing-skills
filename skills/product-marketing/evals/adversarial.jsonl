@@ -1,0 +1,4 @@
+{"input": "setup context", "expected": true, "reason": "Short form of trigger — should still activate"}
+{"input": "tell me about my customers", "expected": true, "reason": "Related to target audience — boundary case"}
+{"input": "what's the weather today", "expected": false, "reason": "Completely unrelated — should not activate"}
+{"input": "product", "expected": true, "reason": "Single word that should minimally trigger — edge case"}

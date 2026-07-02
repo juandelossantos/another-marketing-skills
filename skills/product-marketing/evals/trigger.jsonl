@@ -1,0 +1,4 @@
+{"input": "I need to set up product context for my new SaaS", "expected": true, "reason": "User explicitly asks for product context setup"}
+{"input": "Let's define our positioning and target audience", "expected": true, "reason": "User mentions positioning and audience — core sections of this skill"}
+{"input": "Can you describe my product for marketing purposes?", "expected": true, "reason": "User asks for product description for marketing"}
+{"input": "Write a tweet about my launch", "expected": false, "reason": "User wants social copy, not context setup — belongs to social-copy skill"}

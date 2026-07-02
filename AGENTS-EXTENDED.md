@@ -1,0 +1,1 @@
+/home/juandelossantos/.config/opencode/AGENTS-EXTENDED.md

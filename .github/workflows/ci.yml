@@ -1,0 +1,89 @@
+# CI Pipeline — Runs commands from STACK_CONFIG.md
+# Installed by init-agents (another-agent-skills)
+#
+# Universal: reads test/lint/build commands from STACK_CONFIG.md.
+# No stack detection. No runner assumptions. Just your commands.
+# If you need specific tools, add setup steps below.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Read commands from STACK_CONFIG.md
+        id: stack
+        run: |
+          if [ ! -f "STACK_CONFIG.md" ]; then
+            echo "❌ No STACK_CONFIG.md found."
+            echo ""
+            echo "Run init-agents to create it:"
+            echo "  bash init-agents.sh"
+            echo ""
+            echo "Or create STACK_CONFIG.md manually with your commands:"
+            echo "  | Test | \`your-test-command\` |"
+            echo "  | Build | \`your-build-command\` |"
+            exit 1
+          fi
+
+          TEST_CMD=$(grep -E "^\| Test \|" STACK_CONFIG.md | sed 's/.*`\([^`]*\)`.*/\1/' | head -1)
+          LINT_CMD=$(grep -E "^\| Lint \|" STACK_CONFIG.md | sed 's/.*`\([^`]*\)`.*/\1/' | head -1)
+          BUILD_CMD=$(grep -E "^\| Build \|" STACK_CONFIG.md | sed 's/.*`\([^`]*\)`.*/\1/' | head -1)
+          TYPECHECK_CMD=$(grep -E "^\| Type check \|" STACK_CONFIG.md | sed 's/.*`\([^`]*\)`.*/\1/' | head -1)
+
+          [[ "$TEST_CMD" == *"<configure:"* ]] && TEST_CMD=""
+          [[ "$LINT_CMD" == *"<configure:"* ]] && LINT_CMD=""
+          [[ "$BUILD_CMD" == *"<configure:"* ]] && BUILD_CMD=""
+          [[ "$TYPECHECK_CMD" == *"<configure:"* ]] && TYPECHECK_CMD=""
+
+          # Check if at least one command is configured
+          if [[ -z "$TEST_CMD" && -z "$LINT_CMD" && -z "$BUILD_CMD" && -z "$TYPECHECK_CMD" ]]; then
+            echo "⚠️ STACK_CONFIG.md has no configured commands."
+            echo ""
+            echo "Edit STACK_CONFIG.md and replace <configure: ...> with your actual commands:"
+            echo "  | Test | \`npm test\` |"
+            echo "  | Build | \`npm run build\` |"
+            exit 1
+          fi
+
+          echo "test_cmd=$TEST_CMD" >> $GITHUB_OUTPUT
+          echo "lint_cmd=$LINT_CMD" >> $GITHUB_OUTPUT
+          echo "build_cmd=$BUILD_CMD" >> $GITHUB_OUTPUT
+          echo "typecheck_cmd=$TYPECHECK_CMD" >> $GITHUB_OUTPUT
+          echo "skip=false" >> $GITHUB_OUTPUT
+
+          echo "📋 Running: test=${TEST_CMD:-none} lint=${LINT_CMD:-none} build=${BUILD_CMD:-none} typecheck=${TYPECHECK_CMD:-none}"
+
+      # Add your setup steps here if needed:
+      # - name: Setup Arduino CLI
+      #   run: curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
+      # - name: Setup Java
+      #   uses: actions/setup-java@v4
+      #   with:
+      #     java-version: '21'
+      #     distribution: 'temurin'
+
+      - name: Run tests
+        if: steps.stack.outputs.test_cmd != ''
+        run: ${{ steps.stack.outputs.test_cmd }}
+
+      - name: Run linter
+        if: steps.stack.outputs.lint_cmd != ''
+        run: ${{ steps.stack.outputs.lint_cmd }}
+
+      - name: Run type check
+        if: steps.stack.outputs.typecheck_cmd != ''
+        run: ${{ steps.stack.outputs.typecheck_cmd }}
+
+      - name: Run build
+        if: steps.stack.outputs.build_cmd != ''
+        run: ${{ steps.stack.outputs.build_cmd }}

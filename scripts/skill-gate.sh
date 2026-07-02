@@ -1,0 +1,1 @@
+/home/juandelossantos/.config/opencode/scripts/skill-gate.sh

@@ -1,0 +1,1 @@
+/home/juandelossantos/.config/opencode/scripts/pr-review-checklist.sh
