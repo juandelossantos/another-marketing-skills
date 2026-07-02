@@ -1,0 +1,4 @@
+{"case_id":"trigger_pos_showcase_001","type":"trigger_positive","input":"Can you showcase my product?","expected_skill":"showcase","description":"User explicitly asks to showcase product"}
+{"case_id":"trigger_pos_video_002","type":"trigger_positive","input":"Make a launch video for my new app","expected_skill":"showcase","description":"User wants a video — showcase format"}
+{"case_id":"trigger_pos_social_003","type":"trigger_positive","input":"Write social posts for my product launch","expected_skill":"showcase","description":"User wants social posts — showcase format"}
+{"case_id":"trigger_neg_context_001","type":"trigger_negative","input":"Set up product context for my SaaS","expected_skill":"product-marketing","description":"User wants context setup, not content generation"}

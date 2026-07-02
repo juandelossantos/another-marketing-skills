@@ -1,0 +1,4 @@
+{"case_id":"rephrase_show_001","type":"rephrasing","input":"show off my project","description":"Casual variant of showcase","expected_skill":"showcase","tags":["edge-case"]}
+{"case_id":"rephrase_vid_002","type":"rephrasing","input":"make a video of what I built","description":"Video request variant","expected_skill":"showcase"}
+{"case_id":"boundary_advice_001","type":"negative_boundary","input":"What's the best way to market my product?","description":"Asks for advice, not generation — belongs to marketing-plan","expected_skill":"marketing-plan"}
+{"case_id":"edge_single_word_001","type":"edge_case","input":"promote","description":"Single-word trigger","expected_skill":"showcase","tags":["critical"]}
