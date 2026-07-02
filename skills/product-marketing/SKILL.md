@@ -1,7 +1,7 @@
 ---
 name: product-marketing
 description: "When the user wants to create or update their product marketing context. Use when the user mentions 'product context', 'set up context', 'positioning', 'target audience', 'ICP', 'describe my product', or before using any other marketing skill. Creates `.agents/product-marketing.md` — the shared context file read by ALL generation skills. For brand voice details, see `references/brand-voice.md`. For customer language extraction, see `references/customer-language.md`."
-tier: draft
+tier: active
 ---
 
 # Product Marketing Context

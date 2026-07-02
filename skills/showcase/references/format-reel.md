@@ -1,6 +1,6 @@
 # Reel Format (Short-Form Vertical)
 
-Script for TikTok, Instagram Reels, YouTube Shorts. Requires HEYGEN_API_KEY for rendering.
+Script for TikTok, Instagram Reels, YouTube Shorts. Renders via Hyperframes CLI — no API key needed.
 
 ## Structure (15-30s)
 

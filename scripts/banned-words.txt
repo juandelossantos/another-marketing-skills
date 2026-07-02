@@ -1,0 +1,41 @@
+# Banned words — generic SaaS language detected by content-lint.sh
+# Each line is a case-insensitive pattern checked in generated output.
+# Sources: SOUL.md, taste-skill, copywriting best practices.
+streamline
+elevate
+seamless
+revolutionize
+game-changer
+leverage
+innovative
+cutting-edge
+next-generation
+world-class
+best-in-class
+industry-leading
+robust
+scalable
+holistic
+synergy
+utilize
+empower
+unleash
+driven
+dynamic
+optimize
+transform
+disrupt
+reimagine
+supercharge
+amplify
+accelerate
+deep-dive
+circle-back
+touch-base
+pain-point
+solution
+ecosystem
+paradigm
+granular
+actionable
+low-hanging fruit

@@ -1,7 +1,7 @@
 ---
 name: showcase
 description: "Generate promotional content in multiple formats from one product description. Use when the user says 'showcase', 'promote', 'make a video', 'social post', 'carousel', 'ad', or wants to generate launch content. For copy-only tasks see social-copy. For email sequences see email-drip. Requires `.agents/product-marketing.md` — run product-marketing skill first if missing."
-tier: draft
+tier: active
 ---
 
 # Showcase
@@ -21,21 +21,69 @@ Generates promotional assets across 5 formats from one product input. Multi-form
 
 Read `.agents/product-marketing.md`. If missing, run `product-marketing` skill first (offer auto-draft from codebase).
 
-### Step 2: Format Selection
+### Step 2: Interview — MANDATORY Questions
 
-Ask user which format(s) to generate:
+Ask ALL questions below. DO NOT assume defaults. Record answers. If user says "surprise me" or "you decide", pick and state your choice with justification.
+
+| Question | Options | Applies to |
+|----------|---------|------------|
+| **Format?** | social, ad, video, carousel, reel, or ALL | All |
+| **Tone?** | default, polished, chaotic, deadpan, cinematic, app-store, warm | All |
+| **Duration?** | 15s, 18s, 20s, 25s | Video, Reel |
+| **Music?** | CC0 bed, none | Video, Reel |
+| **Voiceover?** | TTS (Kokoro), none | Video, Reel |
+| **Sound effects?** | transitions, emphasis, none | Video, Reel |
+| **Distribute?** | auto (Buffer), manual (share-copy.txt) | All |
+
+Format reference:
 
 | Format | Output | Dependencies | Fallback |
 |--------|--------|-------------|----------|
 | Social Post | Copy (LinkedIn, Twitter, IG) | None | — |
 | Ad Copy | Headline + body + CTA | None | — |
-| Video | Script + composition | HEYGEN_API_KEY | Output script only |
+| Video | Composition + MP4 | hyperframes CLI (npx) | Output script only |
 | Carousel | Slides + copy | CANVA_API_KEY | Output outline only |
-| Reel | Vertical video script | HEYGEN_API_KEY | Output script only |
+| Reel | Vertical composition + MP4 | hyperframes CLI (npx) | Output script only |
 
-Options: `--format video,post --tone polished --distribute`
+### Step 3: Pre-Generation Gate (MECHANICAL — BLOCKING)
 
-### Step 3: Generate
+After collecting answers, save them:
+
+```bash
+bash scripts/showcase-gate.sh --save
+# Then edit .showcase/interview.json with the user's answers
+```
+
+Before generating, run the gate:
+
+```bash
+bash scripts/showcase-gate.sh
+```
+
+**If exit code ≠ 0:** STOP. Answers are missing. Go back to Step 2.
+
+**Only proceed when exit code = 0.**
+
+### Step 4: Generate
+
+Output goes to `showcase-output/<date>/`. Input assets (logos, screenshots, music) go in `showcase-input/`.
+
+```
+showcase-output/
+└── 2026-07-02/
+    ├── video.mp4              ← Rendered video
+    ├── carousel.mp4           ← Rendered carousel
+    ├── reel.mp4               ← Rendered reel
+    ├── social-post.md         ← LinkedIn + Twitter + IG
+    ├── ad-copy.md             ← Google + LinkedIn Ads
+    ├── carousel-outline.md    ← Slide text outline
+    └── share-copy.txt         ← All copy ready to paste
+
+showcase-input/
+├── images/                    ← Logos, screenshots, hero images
+├── music/                     ← Custom music tracks
+└── videos/                    ← Existing footage / B-roll
+```
 
 Read the format-specific reference guide:
 
@@ -48,17 +96,19 @@ Read the format-specific reference guide:
 Apply brand voice from `product-marketing.md` Section 10.
 Apply tone from `references/tone-system.md`.
 
-### Step 4: Quality Gate
+Use hyperframes CLI for video/reel rendering: `npx hyperframes lint <dir>` then `npx hyperframes render <dir> --out showcase-output/<date>/video.mp4`.
 
-Run the per-format verification checklist from `references/quality-gates.md`:
+### Step 5: Quality Gate (MANDATORY)
 
-All formats: brand voice compliance, no generic language, CTA present.
-Social: character limits per platform. Video: 15-25s duration.
-Carousel: N slides match plan. Ad: headline + body + CTA.
+Run `bash scripts/content-lint.sh --file <output>` and `bash scripts/voice-lint.sh --file <output>`.
 
-### Step 5: Distribute
+If either fails (exit 1) → FIX violations. Do NOT distribute until both pass.
 
-Auto (Buffer API if BUFFER_API_KEY set) or Manual (write `share-copy.txt`).
+See `references/quality-gates.md` for per-format rubrics.
+
+### Step 6: Distribute
+
+Auto (Buffer API if BUFFER_API_KEY set, must confirm with user) or Manual (write `share-copy.txt`).
 
 See `references/distribution.md`.
 
@@ -79,13 +129,16 @@ Full definitions: `references/tone-system.md`
 ## Verification Checklist
 
 - [ ] `.agents/product-marketing.md` exists and was read
-- [ ] Format selection confirmed by user
+- [ ] PRE-GENERATION GATE: All 7 questions answered (format, tone, duration, music, VO, SFX, distribute)
+- [ ] User explicitly confirmed each choice (not assumed)
 - [ ] Output file(s) generated per format spec
 - [ ] Brand voice compliance checked (no vocabulary drift)
 - [ ] Character/resolution/duration limits respected
 - [ ] CTA present in all generated content
 - [ ] Generic SaaS language check passed
-- [ ] share-copy.txt written (manual mode) or Buffer scheduled (auto mode)
+- [ ] `bash scripts/content-lint.sh --file <output>` — PASS
+- [ ] `bash scripts/voice-lint.sh --file <output>` — PASS
+- [ ] share-copy.txt written (manual mode) or Buffer scheduled (auto mode, user confirmed)
 
 ## Related Skills
 

@@ -41,9 +41,24 @@ Also write tool-specific instructions:
 - "Import this script into HeyGen"
 - "Post this on LinkedIn manually"
 
+## Quality gate (MANDATORY)
+
+Before distributing, run content-lint and voice-lint on generated output:
+
+```bash
+bash scripts/content-lint.sh --file share-copy.txt
+bash scripts/voice-lint.sh --file share-copy.txt
+```
+
+**If content-lint fails (exit 1):** Fix violations before distributing. Do not bypass.
+
+**If voice-lint fails (exit 1):** Brand voice violation — fix vocabulary to match `.agents/product-marketing.md`.
+
 ## Quality checks
 
 - [ ] share-copy.txt written (manual mode)
 - [ ] Each piece has platform label
 - [ ] No API keys leaked in output
 - [ ] User confirmed before any automatic publish
+- [ ] `bash scripts/content-lint.sh --file share-copy.txt` — PASS
+- [ ] `bash scripts/voice-lint.sh --file share-copy.txt` — PASS

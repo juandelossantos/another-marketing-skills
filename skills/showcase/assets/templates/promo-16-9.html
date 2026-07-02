@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=1920, height=1080"/>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; }
+    body { font-family: 'Inter', 'Helvetica Neue', sans-serif; }
+    .slide {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .bg-dark { background: #111111; }
+    .bg-warm { background: #F7F6F3; }
+    .inner {
+      padding: 80px 160px;
+      text-align: center;
+      max-width: 1400px;
+    }
+    .title { font-size: 80px; font-weight: 700; letter-spacing: -0.03em; color: #111111; line-height: 1.1; }
+    .title-light { color: #F7F6F3; }
+    .accent-red { color: #9F2F2D; }
+    .subtitle { font-size: 28px; font-weight: 400; color: #787774; margin-top: 24px; line-height: 1.6; }
+    .subtitle-light { color: #A09890; }
+    .url { font-family: 'Courier New', monospace; font-size: 18px; color: #555555; margin-top: 40px; }
+    .logo { font-size: 24px; font-weight: 600; letter-spacing: 0.05em; color: #111111; text-transform: uppercase; }
+    .divider { width: 60px; height: 2px; background: #9F2F2D; margin: 32px auto; }
+    .tag { display: inline-block; padding: 8px 16px; border-radius: 4px; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; margin: 4px; }
+    .tag-red { background: #FDEBEC; color: #9F2F2D; }
+    .tag-blue { background: #E1F3FE; color: #1F6C9F; }
+    .tag-green { background: #EDF3EC; color: #346538; }
+    .tag-yellow { background: #FBF3DB; color: #956400; }
+    .flex-row { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-top: 40px; max-width: 900px; }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="18" data-width="1920" data-height="1080" data-fps="30">
+
+  <!-- Scene 1: Hook — dark background -->
+  <div id="s1" class="slide clip bg-dark" data-start="0" data-duration="5" style="opacity:0;">
+    <div class="inner"><div class="title title-light" style="font-size:96px;">You built it.</div></div>
+  </div>
+
+  <!-- Scene 2: Reveal — warm background, accent -->
+  <div id="s2" class="slide clip bg-warm" data-start="4" data-duration="5" style="opacity:0;">
+    <div class="inner"><div class="title" style="font-size:96px;">Now <span class="accent-red">promote</span> it.</div></div>
+  </div>
+
+  <!-- Scene 3: Product features -->
+  <div id="s3" class="slide clip bg-warm" data-start="8" data-duration="5" style="opacity:0;">
+    <div class="inner">
+      <div class="title" style="font-size:64px;">5 promotional formats.</div>
+      <div class="subtitle">One product description. Finished assets, not advice.</div>
+      <div class="flex-row">
+        <span class="tag tag-red">Video</span>
+        <span class="tag tag-blue">Carousel</span>
+        <span class="tag tag-green">Social</span>
+        <span class="tag tag-yellow">Email</span>
+        <span class="tag tag-red">Launch Plan</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scene 4: CTA — dark background -->
+  <div id="s4" class="slide clip bg-dark" data-start="12" data-duration="6" style="opacity:0;">
+    <div class="inner">
+      <div class="logo title-light">another-marketing-skills</div>
+      <div class="divider"></div>
+      <div class="subtitle subtitle-light">Open source · MIT · Agent-native</div>
+      <div class="url" style="color:#787774;">github.com/juandelossantos/another-marketing-skills</div>
+    </div>
+  </div>
+
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+const tl = gsap.timeline({ paused: true });
+tl.set("#s1", { opacity: 1 });
+tl.from("#s1 .title", { opacity: 0, y: 40, duration: 1.2, ease: "power3.out" }, 0.3);
+tl.to("#s1", { opacity: 0, duration: 0.6 }, 3.8);
+tl.set("#s2", { opacity: 1 });
+tl.from("#s2 .title", { opacity: 0, y: 30, duration: 1, ease: "power3.out" }, 4.2);
+tl.to("#s2", { opacity: 0, duration: 0.6 }, 7.8);
+tl.set("#s3", { opacity: 1 });
+tl.from("#s3 .title", { opacity: 0, y: 25, duration: 0.8, ease: "power3.out" }, 8.2);
+tl.from("#s3 .subtitle", { opacity: 0, y: 15, duration: 0.6, ease: "power3.out" }, 9);
+tl.from("#s3 .tag", { opacity: 0, y: 10, duration: 0.4, stagger: 0.08, ease: "power3.out" }, 9.5);
+tl.to("#s3", { opacity: 0, duration: 0.6 }, 11.8);
+tl.set("#s4", { opacity: 1 });
+tl.from("#s4 .logo", { opacity: 0, y: 20, duration: 0.8, ease: "power3.out" }, 12.3);
+tl.from("#s4 .divider", { scaleX: 0, transformOrigin: "center", duration: 0.5, ease: "power3.out" }, 13);
+tl.from("#s4 .subtitle", { opacity: 0, y: 12, duration: 0.5, ease: "power3.out" }, 13.5);
+tl.from("#s4 .url", { opacity: 0, y: 12, duration: 0.5, ease: "power3.out" }, 14);
+window.__timelines["main"] = tl;
+</script>
+</body>
+</html>
