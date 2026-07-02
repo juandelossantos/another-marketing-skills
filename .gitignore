@@ -43,8 +43,8 @@ development/
 /CLAUDE.md
 /.cursorrules
 
-# Agent skills config (per-user, generated)
-.agents/
+# Agent skills config (generated context file, per-project)
+.agents/product-marketing.md
 
 # Auto-update tracking
 .last-update-check

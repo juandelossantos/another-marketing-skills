@@ -1,0 +1,3 @@
+{"input": "Describe a typical use case for this skill", "expected_output": "use_case_description", "rubric": ["describes concrete scenario", "mentions trigger conditions", "includes expected outcome"]}
+{"input": "Walk through the core workflow step by step", "expected_output": "workflow_steps", "rubric": ["lists sequential steps", "mentions verification points", "includes error handling"]}
+{"input": "What are the boundaries of this skill?", "expected_output": "boundaries", "rubric": ["lists when to use", "lists when NOT to use", "mentions related skills"]}

@@ -1,4 +1,4 @@
-{"input": "setup context", "expected": true, "reason": "Short form of trigger — should still activate"}
-{"input": "tell me about my customers", "expected": true, "reason": "Related to target audience — boundary case"}
-{"input": "what's the weather today", "expected": false, "reason": "Completely unrelated — should not activate"}
-{"input": "product", "expected": true, "reason": "Single word that should minimally trigger — edge case"}
+{"case_id":"rephrase_short_001","type":"rephrasing","input":"setup context","description":"Short form of trigger — should still activate","expected_skill":"product-marketing","tags":["edge-case"]}
+{"case_id":"rephrase_customers_002","type":"rephrasing","input":"tell me about my customers","description":"Related to target audience — boundary case","expected_skill":"product-marketing"}
+{"case_id":"boundary_unrelated_001","type":"negative_boundary","input":"what's the weather today","description":"Completely unrelated — should not activate","expected_skill":"product-marketing"}
+{"case_id":"edge_single_word_001","type":"edge_case","input":"product","description":"Single word that should minimally trigger","expected_skill":"product-marketing","tags":["critical"]}
