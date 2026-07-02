@@ -2,8 +2,8 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](VERSION)
-[![Skills: 1](https://img.shields.io/badge/skills-1%20%E2%86%92%208%20planned-brightgreen)](skills/)
-[![Status: Build](https://img.shields.io/badge/status-building-yellow)](HEALTH-CHECK.md)
+[![Skills: 2](https://img.shields.io/badge/skills-2%20%E2%86%92%208%20planned-brightgreen)](skills/)
+[![Status: Active](https://img.shields.io/badge/status-active-brightgreen)](HEALTH-CHECK.md)
 [![CI](https://img.shields.io/github/actions/workflow/status/juandelossantos/another-marketing-skills/ci.yml?branch=main)](https://github.com/juandelossantos/another-marketing-skills/actions)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![OpenCode](https://img.shields.io/badge/OpenCode-first-8A2BE2)](https://opencode.ai)
@@ -81,7 +81,8 @@ flowchart LR
 
 | Skill | Status | What It Does | Depends On |
 |-------|--------|-------------|------------|
-| `product-marketing` | ✅ v0.1 (draft) | Creates `.agents/product-marketing.md` — shared context for all skills | None |
+| `product-marketing` | ✅ v1.0 (active) | Creates `.agents/product-marketing.md` — shared context for all skills | None |
+| `showcase` | ✅ v1.0 (active) | 5-formats generator: video, carousel, reel, social post, ad copy. Mechanical quality gates. | hyperframes CLI |
 
 ### Planned (Fase 1-3)
 
@@ -224,11 +225,12 @@ another-marketing-skills/
 ## Status
 
 - **Current version:** 0.1.0
-- **Skills shipped:** 1 (product-marketing, draft)
+- **Skills shipped:** 2 (product-marketing + showcase, both active)
 - **Planned skills:** 8 total across 4 fases
 - **Infrastructure:** install.sh + install.ps1, eval system, multi-agent symlinks ✅
-- **Landing page:** Deferred until 2+ skills (Fase 1b)
-- **Eval tests:** 4/4 trigger pass, full coverage
+- **Mechanical gates:** content-lint, voice-lint, showcase interview gate ✅
+- **Landing page:** Deferred until 4+ skills
+- **Eval tests:** 8/8 trigger pass, full coverage both skills
 
 See [`HEALTH-CHECK.md`](HEALTH-CHECK.md) for full project state.
 
