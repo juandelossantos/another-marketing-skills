@@ -1,6 +1,6 @@
 # HEALTH-CHECK: another-marketing-skills
 
-> **Version:** 1.0 | **Date:** 2026-06-22 | **Status:** INITIAL
+> **Version:** 2.0 | **Date:** 2026-07-02 | **Status:** BUILD — Fase 0 Complete, Fase 1 in Progress
 > **Project:** `another-marketing-skills` — AI agent skill system for product promotion
 
 ---
@@ -11,25 +11,27 @@
 |-------|-------|
 | **SOUL.md** | ✅ Propia (no symlink) |
 | **AGENTS.md** | ✅ Existente |
-| **VERSION** | 1.11.0 (hereda de another-agent-skills) |
-| **MASTER_PLAN.md** | ✅ v2.0, 1060 líneas |
-| **Git repo** | ❌ No inicializado |
+| **VERSION** | 0.1.0 (propia — ya no hereda) |
+| **MASTER_PLAN.md** | ✅ v2.1, 1448 líneas |
+| **Git repo** | ✅ Inicializado + pushed a GitHub (SSH) |
+| **SPEC.md** | ✅ Creado (10 secciones) |
+| **DESIGN.md** | ✅ Creado (tokens + wireframes + lock) |
 | **Stack** | N/A (skills de contenido, no aplicación) |
 
 ---
 
 ## Skill Inventory
 
-| Skill | Status | SKILL.md | references/ | evals/ | tools/ needed |
-|-------|--------|----------|-------------|--------|---------------|
-| product-marketing | ❌ No creado | — | — | — | Ninguno |
-| showcase | ❌ No creado | — | — | — | Hyperframes, Buffer, Canva |
-| customer-research | ❌ No creado | — | — | — | Ninguno |
-| social-copy | ❌ No creado | — | — | — | Buffer |
-| email-drip | ❌ No creado | — | — | — | SendGrid (v2) |
-| launch-plan | ❌ No creado | — | — | — | Ninguno |
-| marketing-plan | ❌ No creado | — | — | — | Ninguno |
-| seo-foundation | ❌ No creado | — | — | — | Ninguno |
+| Skill | Status | SKILL.md | references/ | evals/ | tools/ needed | Eval tests |
+|-------|--------|----------|-------------|--------|---------------|------------|
+| product-marketing | ✅ v0.1 (draft) | 116 líneas ✓ | 2 (brand-voice, customer-language) | trigger + golden + adversarial | Ninguno | 4 trigger ✓ full coverage |
+| showcase | ❌ No creado | — | — | — | Hyperframes, Buffer, Canva | — |
+| customer-research | ❌ No creado | — | — | — | Ninguno | — |
+| social-copy | ❌ No creado | — | — | — | Buffer | — |
+| email-drip | ❌ No creado | — | — | — | SendGrid (v2) | — |
+| launch-plan | ❌ No creado | — | — | — | Ninguno | — |
+| marketing-plan | ❌ No creado | — | — | — | Ninguno | — |
+| seo-foundation | ❌ No creado | — | — | — | Ninguno | — |
 
 ---
 
@@ -45,6 +47,12 @@
 | `scripts/pre-flight.sh` | ✅ Existente | Heredado |
 | `scripts/task-manifest.sh` | ✅ Existente | Heredado |
 | `scripts/pr-review-checklist.sh` | ✅ Existente | Heredado |
+| `scripts/eval/` | ✅ 9 scripts | Copiado de another-agent-skills |
+| `install.sh` | ✅ Linux/macOS | Cross-platform, relative symlinks |
+| `install.ps1` | ✅ Windows | PowerShell, directory junctions |
+| `.opencode/skills/` | ✅ product-marketing | Symlink relativo |
+| `.agents/skills/` | ✅ product-marketing | Symlink relativo |
+| `.claude/skills/` | ✅ product-marketing | Symlink relativo |
 | `tools/REGISTRY.md` | ❌ No creado | Necesario para Fase 1 |
 | `tools/clis/` | ❌ No creado | CLI wrappers para APIs |
 | `tools/integrations/` | ❌ No creado | Guías por API |
@@ -74,7 +82,7 @@ skill-creator → customize → run-evals → skill-improver → human approve
 | Token Budget | `skill-lint.sh` | SKILL.md < 5000 tokens (automated) |
 | Regression | `evals/adversarial.jsonl` | Rephrasing + boundary + edge cases |
 
-**Run:** `bash scripts/eval/run-evals.sh --all` (172 cases across all skills)
+**Run:** `bash scripts/eval/run-evals.sh --all` (4 trigger tests, 1 skill)
 
 ## Design Review Toolchain (POST-CREATION)
 
@@ -110,14 +118,33 @@ skill-creator → customize → run-evals → skill-improver → human approve
 
 ---
 
-## Pending Before Fase 0 Execution
+## Fase 0 Status (✅ Complete)
 
-- [ ] User approval of MASTER_PLAN.md
-- [ ] SPEC.md creation
-- [ ] DESIGN.md creation
-- [ ] .gitignore creation
-- [ ] Git init + first commit
+- [x] User approval of MASTER_PLAN.md
+- [x] SPEC.md creation (10 sections)
+- [x] DESIGN.md + DESIGN-LOCK.md creation
+- [x] .gitignore creation (75 lines)
+- [x] Git init + first commit
+- [x] README.md (Mermaid diagrams, install, agent compat)
+- [x] STACK_CONFIG.md configured for CI
+- [x] VERSION set to 0.1.0 (propia)
+- [x] install.sh + install.ps1 (cross-platform)
+- [x] scripts/eval/ (9 scripts + schema)
+- [x] Multi-agent symlinks (.opencode, .agents, .claude)
+- [x] `product-marketing` skill (tier: draft, 116 lines)
+- [x] Eval system: 4 trigger tests pass, full coverage
+
+## Next Up (Fase 1)
+
+- [ ] `showcase` skill (multi-format generator)
+- [ ] `customer-research` skill
+- [ ] `social-copy` skill
+- [ ] `email-drip` skill
+- [ ] `launch-plan` skill
+- [ ] `marketing-plan` skill
+- [ ] `seo-foundation` skill
 - [ ] `tools/REGISTRY.md` scaffold
+- [ ] Landing page (`docs/`) — deferred until 2+ skills
 
 ---
 

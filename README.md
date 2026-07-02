@@ -1,9 +1,10 @@
 # Another Marketing Skills
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-1.11.0-blue.svg)](VERSION)
+[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](VERSION)
 [![Skills: 1](https://img.shields.io/badge/skills-1%20%E2%86%92%208%20planned-brightgreen)](skills/)
-[![Status: Alpha](https://img.shields.io/badge/status-alpha-orange)](HEALTH-CHECK.md)
+[![Status: Build](https://img.shields.io/badge/status-building-yellow)](HEALTH-CHECK.md)
+[![CI](https://img.shields.io/github/actions/workflow/status/juandelossantos/another-marketing-skills/ci.yml?branch=main)](https://github.com/juandelossantos/another-marketing-skills/actions)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![OpenCode](https://img.shields.io/badge/OpenCode-first-8A2BE2)](https://opencode.ai)
 
@@ -222,11 +223,12 @@ another-marketing-skills/
 
 ## Status
 
-- **Current version:** 1.11.0
+- **Current version:** 0.1.0
 - **Skills shipped:** 1 (product-marketing, draft)
 - **Planned skills:** 8 total across 4 fases
-- **Landing page:** Not yet deployed (after 2+ skills)
-- **Install script:** Coming in Fase 1b
+- **Infrastructure:** install.sh + install.ps1, eval system, multi-agent symlinks ✅
+- **Landing page:** Deferred until 2+ skills (Fase 1b)
+- **Eval tests:** 4/4 trigger pass, full coverage
 
 See [`HEALTH-CHECK.md`](HEALTH-CHECK.md) for full project state.
 
