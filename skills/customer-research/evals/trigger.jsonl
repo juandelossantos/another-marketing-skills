@@ -1,0 +1,4 @@
+{"case_id":"trigger_pos_research_001","type":"trigger_positive","input":"I need to understand what our customers actually think","expected_skill":"customer-research","description":"User explicitly asks for customer research"}
+{"case_id":"trigger_pos_voc_002","type":"trigger_positive","input":"Extract voice of customer from our support tickets","expected_skill":"customer-research","description":"User wants VOC extraction from existing assets"}
+{"case_id":"trigger_pos_persona_003","type":"trigger_positive","input":"Build customer personas for our product","expected_skill":"customer-research","description":"User wants persona generation"}
+{"case_id":"trigger_neg_showcase_001","type":"trigger_negative","input":"Make a launch video for my product","expected_skill":"showcase","description":"User wants content generation, not research"}

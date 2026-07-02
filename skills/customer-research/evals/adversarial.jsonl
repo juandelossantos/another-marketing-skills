@@ -1,0 +1,4 @@
+{"case_id":"rephrase_understand_001","type":"rephrasing","input":"find out what users are saying","description":"Casual variant of research trigger","expected_skill":"customer-research","tags":["edge-case"]}
+{"case_id":"rephrase_mining_002","type":"rephrasing","input":"mine Reddit for customer complaints","description":"Digital watering hole variant","expected_skill":"customer-research"}
+{"case_id":"boundary_copy_001","type":"negative_boundary","input":"Write a tweet about our product launch","description":"Copy task — not research","expected_skill":"showcase"}
+{"case_id":"edge_voc_only_001","type":"edge_case","input":"VOC","description":"Single acronym trigger","expected_skill":"customer-research","tags":["critical"]}
