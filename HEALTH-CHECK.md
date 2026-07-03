@@ -1,6 +1,6 @@
 # HEALTH-CHECK: another-marketing-skills
 
-> **Version:** 3.1 | **Date:** 2026-07-02 | **Status:** BUILD — Fase 0-3 Complete, Fase 4 in progress
+> **Version:** 3.1 | **Date:** 2026-07-02 | **Status:** BUILD — Fase 0-3 Complete, Fase 4 in progress (README sweep done)
 > **Project:** `another-marketing-skills` — AI agent skill system for product promotion
 
 ---
@@ -26,18 +26,12 @@
 |-------|--------|----------|-------------|--------|---------------|------------|
 | product-marketing | ✅ v1.0 (active) | 116 lines | 2 guides | trigger + golden + adversarial | None | 4 trigger ✓ full coverage |
 | showcase | ✅ v1.0 (active) | 150 lines | 9 guides (audio, tone, quality, distribution, 5 format refs) | trigger + golden + adversarial | hyperframes CLI, Pixabay CC0 | 4 trigger ✓ full coverage |
-| customer-research | ❌ No creado | — | — | — | None | — |
-| social-copy | ❌ No creado | — | — | — | Buffer | — |
-| email-drip | ❌ No creado | — | — | — | SendGrid (v2) | — |
-| launch-plan | ❌ No creado | — | — | — | None | — |
-| marketing-plan | ❌ No creado | — | — | — | None | — |
-| seo-foundation | ❌ No creado | — | — | — | None | — |
-| customer-research | ❌ No creado | — | — | — | Ninguno | — |
-| social-copy | ❌ No creado | — | — | — | Buffer | — |
-| email-drip | ❌ No creado | — | — | — | SendGrid (v2) | — |
-| launch-plan | ❌ No creado | — | — | — | Ninguno | — |
-| marketing-plan | ❌ No creado | — | — | — | Ninguno | — |
-| seo-foundation | ❌ No creado | — | — | — | Ninguno | — |
+| customer-research | ✅ v1.0 (active) | 125 lines | 3 guides | trigger + golden + adversarial | None | 4 trigger ✓ full coverage |
+| social-copy | ✅ v1.0 (active) | 89 lines | 5 guides | trigger + golden + adversarial | Buffer | 4 trigger ✓ full coverage |
+| email-drip | ✅ v1.0 (active) | 97 lines | 4 guides | trigger + golden + adversarial | SendGrid (v2) | 4 trigger ✓ full coverage |
+| launch-plan | ✅ v1.0 (active) | 98 lines | 3 guides | trigger + golden + adversarial | None | 4 trigger ✓ full coverage |
+| marketing-plan | ✅ v1.0 (active) | 110 lines | 3 guides | trigger + golden + adversarial | None | 4 trigger ✓ full coverage |
+| seo-foundation | ✅ v1.0 (active) | 110 lines | 3 guides | trigger + golden + adversarial | None | 4 trigger ✓ full coverage |
 
 ---
 
@@ -176,7 +170,7 @@ skill-creator → customize → run-evals → skill-improver → human approve
 - [ ] `CONTRIBUTING.md` — skill creation guidelines
 - [ ] `VERSIONS.md` — per-skill changelog
 - [ ] `install.ps1` — add --global mode + init-marketing.ps1
-- [ ] README final sweep — accurate install, skills, gates
+- [x] README final sweep — accurate install, skills, gates
 - [ ] Landing page (`docs/`) — Vite 8 + React 19 + Tailwind 4
 - [ ] Ship v1.0 — GitHub release + tag
 
