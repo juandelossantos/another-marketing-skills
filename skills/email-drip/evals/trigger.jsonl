@@ -1,0 +1,4 @@
+{"case_id":"trigger_pos_welcome_001","type":"trigger_positive","input":"Create a welcome email sequence for new users","expected_skill":"email-drip","description":"User wants welcome sequence"}
+{"case_id":"trigger_pos_nurture_002","type":"trigger_positive","input":"Design a nurture campaign for our leads","expected_skill":"email-drip","description":"User wants nurture campaign"}
+{"case_id":"trigger_pos_drip_003","type":"trigger_positive","input":"Set up a drip campaign for product onboarding","expected_skill":"email-drip","description":"User wants drip campaign"}
+{"case_id":"trigger_neg_showcase_001","type":"trigger_negative","input":"Make a launch video for our product","expected_skill":"showcase","description":"User wants video, not email"}

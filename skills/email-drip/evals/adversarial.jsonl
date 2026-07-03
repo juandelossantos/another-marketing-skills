@@ -1,0 +1,4 @@
+{"case_id":"rephrase_emails_001","type":"rephrasing","input":"send a series of emails to new signups","description":"Casual variant of email sequence request","expected_skill":"email-drip","tags":["edge-case"]}
+{"case_id":"rephrase_drip_002","type":"rephrasing","input":"set up an automated email flow","description":"Drip campaign variant","expected_skill":"email-drip"}
+{"case_id":"boundary_video_001","type":"negative_boundary","input":"Record a video walkthrough","description":"Video task — not email","expected_skill":"showcase"}
+{"case_id":"edge_emails_001","type":"edge_case","input":"email sequence","description":"Two-word trigger","expected_skill":"email-drip","tags":["critical"]}
