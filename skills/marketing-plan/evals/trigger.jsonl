@@ -1,0 +1,4 @@
+{"case_id":"trigger_pos_plan_001","type":"trigger_positive","input":"Create a 12-month marketing plan for our SaaS","expected_skill":"marketing-plan","description":"User wants full marketing plan"}
+{"case_id":"trigger_pos_aarrr_002","type":"trigger_positive","input":"Build an AARRR growth plan for our startup","expected_skill":"marketing-plan","description":"User wants AARRR plan"}
+{"case_id":"trigger_pos_roadmap_003","type":"trigger_positive","input":"I need a 90-day marketing roadmap","expected_skill":"marketing-plan","description":"User wants 90-day roadmap"}
+{"case_id":"trigger_neg_launch_001","type":"trigger_negative","input":"Plan the launch for our new feature","expected_skill":"launch-plan","description":"User wants launch plan, not marketing plan"}

@@ -1,0 +1,4 @@
+{"case_id":"rephrase_strategy_001","type":"rephrasing","input":"growth strategy for our product","description":"Casual variant","expected_skill":"marketing-plan","tags":["edge-case"]}
+{"case_id":"rephrase_quarterly_002","type":"rephrasing","input":"quarterly marketing roadmap","description":"Quarterly variant","expected_skill":"marketing-plan"}
+{"case_id":"boundary_launch_001","type":"negative_boundary","input":"Plan our Product Hunt launch","description":"Launch task — not full plan","expected_skill":"launch-plan"}
+{"case_id":"edge_plan_001","type":"edge_case","input":"marketing plan","description":"Two-word trigger","expected_skill":"marketing-plan","tags":["critical"]}
