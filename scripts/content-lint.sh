@@ -86,7 +86,7 @@ check_platform_limits() {
     local content
     content=$(cat "$file" 2>/dev/null) || return
 
-    if echo "$content" | grep -q "LinkedIn"; then
+    if echo "$content" | grep -c "LinkedIn" > /dev/null 2>&1; then
         local linkedin_lines
         linkedin_lines=$(echo "$content" | sed -n '/LinkedIn/,/Twitter\|Ad Copy\|^$/p' | wc -l)
         [ "$linkedin_lines" -lt 200 ] && ok "LinkedIn post: reasonable length" || warn "LinkedIn post may be too long ($linkedin_lines lines)"
@@ -168,11 +168,11 @@ check_video_duration() {
 check_scannability() {
     local file="$1"
     local content
-    content=$(cat "$file" 2>/dev/null) || return
+    content=$(cat "$file" 2>/dev/null) || { warn "Cannot read for scannability"; return; }
 
-    # Check for line breaks between paragraphs (scannability)
     local paragraphs
-    paragraphs=$(echo "$content" | grep -c '^$')
+    paragraphs=$(echo "$content" | grep -c '^$' 2>/dev/null || true)
+    paragraphs=${paragraphs%% *}
     if [ "$paragraphs" -ge 3 ]; then
         ok "Content is scannable ($paragraphs paragraph breaks)"
     else
@@ -201,6 +201,30 @@ check_file() {
             check_cta_presence "$file"
             check_platform_limits "$file"
             check_scannability "$file"
+            # SEO meta checks
+            seo_content=$(cat "$file" 2>/dev/null || echo "")
+            if echo "$seo_content" | grep -c '^Title:' > /dev/null 2>&1; then
+                seo_title=$(echo "$seo_content" | grep '^Title:' | head -1 | sed 's/^Title: *"//' | sed 's/".*//')
+                seo_tlen=${#seo_title}
+                if [ "$seo_tlen" -ge 50 ] && [ "$seo_tlen" -le 60 ]; then
+                    ok "Meta title: ${seo_tlen}c (target 50-60)"
+                elif [ "$seo_tlen" -lt 50 ]; then
+                    warn "Meta title too short: ${seo_tlen}c (target 50-60)"
+                else
+                    warn "Meta title too long: ${seo_tlen}c (target 50-60)"
+                fi
+            fi
+            if echo "$seo_content" | grep -c '^Description:' > /dev/null 2>&1; then
+                seo_desc=$(echo "$seo_content" | grep '^Description:' | head -1 | sed 's/^Description: *"//' | sed 's/".*//')
+                seo_dlen=${#seo_desc}
+                if [ "$seo_dlen" -ge 150 ] && [ "$seo_dlen" -le 160 ]; then
+                    ok "Meta description: ${seo_dlen}c (target 150-160)"
+                elif [ "$seo_dlen" -lt 150 ]; then
+                    warn "Meta description too short: ${seo_dlen}c (target 150-160)"
+                else
+                    warn "Meta description too long: ${seo_dlen}c (target 150-160)"
+                fi
+            fi
             ;;
         *)
             check_banned_words "$file"
