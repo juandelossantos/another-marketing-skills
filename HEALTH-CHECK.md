@@ -1,6 +1,6 @@
 # HEALTH-CHECK: another-marketing-skills
 
-> **Version:** 3.0 | **Date:** 2026-07-02 | **Status:** BUILD — Fase 0-1 Complete, 2 skills shipped
+> **Version:** 3.1 | **Date:** 2026-07-02 | **Status:** BUILD — Fase 0-3 Complete, Fase 4 in progress
 > **Project:** `another-marketing-skills` — AI agent skill system for product promotion
 
 ---
@@ -131,11 +131,11 @@ skill-creator → customize → run-evals → skill-improver → human approve
 
 ---
 
-## Fase 0-1 Status (✅ Complete)
+## Fase 0-3 Status (✅ Complete)
 
 ### Fase 0: Foundation
 - [x] SPEC.md, DESIGN.md, .gitignore, README.md
-- [x] Git repo + GitHub, 6 commits pushed
+- [x] Git repo + GitHub, 21 commits pushed
 - [x] VERSION 0.1.0 (own, not inherited)
 - [x] install.sh + install.ps1 (cross-platform)
 - [x] scripts/eval/ — 9 scripts, full eval pipeline
@@ -143,29 +143,42 @@ skill-creator → customize → run-evals → skill-improver → human approve
 - [x] CI configured (skill-lint on every push)
 
 ### Fase 1: Foundation Skills
-- [x] `product-marketing` skill (tier: active, 116 lines)
-  - 2 reference guides, 3 eval files, 4 trigger tests pass
-- [x] `showcase` skill (tier: active, 150 lines)
-  - 9 reference guides, 3 eval files, 4 trigger tests pass
-  - 5 formats: video, carousel, reel, social post, ad copy
-  - Mechanical interview gate (7 mandatory questions)
-  - Content quality gate (content-lint.sh)
-  - Brand voice gate (voice-lint.sh)
-  - 41 banned terms enforced
-  - CC0 music sources documented
-  - HTML template for Hyperframes compositions
-  - Build helper script
+- [x] `product-marketing` (116 lines, active) — context foundation
+- [x] `showcase` (150 lines, active) — 5 formats + audio + template
 
-## Next Up (Fase 2: Content Skills)
+### Fase 2: Content Skills
+- [x] `customer-research` (125 lines, active) — VOC, personas, source guides
+- [x] `social-copy` (89 lines, active) — 7 platforms + hooks + calendar
+- [x] `email-drip` (97 lines, active) — 5 sequence types
 
-- [ ] `customer-research` skill — VoC extraction, audience research
-- [ ] `social-copy` skill — dedicated multi-platform copy tool
-- [ ] `email-drip` skill — email sequences
-- [ ] `launch-plan` skill — GTM timeline + content calendar
-- [ ] `marketing-plan` skill — AARRR campaign planning
-- [ ] `seo-foundation` skill — meta, structured data, AEO/GEO
-- [ ] `tools/REGISTRY.md` scaffold
-- [ ] Landing page (`docs/`) — deferred until 4+ skills
+### Fase 3: Strategy Skills
+- [x] `launch-plan` (98 lines, active) — GTM, ORB, 5-phase
+- [x] `marketing-plan` (110 lines, active) — AARRR, 13 sections
+- [x] `seo-foundation` (110 lines, active) — meta, JSON-LD, OG, AEO/GEO
+- [x] `tools/REGISTRY.md` — all 8 skills indexed
+
+### Mechanical Enforcement (8 gates)
+- [x] `research-gate.sh` — customer-research (4 questions)
+- [x] `social-gate.sh` — social-copy (5 questions)
+- [x] `plan-gate.sh` — marketing-plan (5 questions)
+- [x] `seo-gate.sh` — seo-foundation (4 questions)
+- [x] `showcase-gate.sh` — showcase (7 questions)
+- [x] `content-lint.sh` — quality (banned words, CTA, length, audio, SEO)
+- [x] `voice-lint.sh` — brand voice
+- [x] `commit-gate.sh` — all (blocks commit if interviews incomplete)
+
+### Global Install
+- [x] `init-marketing` alias — links only 8 marketing skills
+- [x] Coexists with another-agent-skills (no hook overwrite)
+
+## Next Up (Fase 4: Polish & Release)
+
+- [ ] `CONTRIBUTING.md` — skill creation guidelines
+- [ ] `VERSIONS.md` — per-skill changelog
+- [ ] `install.ps1` — add --global mode + init-marketing.ps1
+- [ ] README final sweep — accurate install, skills, gates
+- [ ] Landing page (`docs/`) — Vite 8 + React 19 + Tailwind 4
+- [ ] Ship v1.0 — GitHub release + tag
 
 ---
 
