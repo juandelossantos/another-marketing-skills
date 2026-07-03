@@ -1,0 +1,4 @@
+{"case_id":"rephrase_tweets_001","type":"rephrasing","input":"schedule some tweets about our update","description":"Casual variant of social media request","expected_skill":"social-copy","tags":["edge-case"]}
+{"case_id":"rephrase_calendar_002","type":"rephrasing","input":"plan my content for the week","description":"Calendar variant","expected_skill":"social-copy"}
+{"case_id":"boundary_video_001","type":"negative_boundary","input":"Edit our launch video","description":"Video editing — not social copy","expected_skill":"showcase"}
+{"case_id":"edge_posts_001","type":"edge_case","input":"posts","description":"Single-word trigger","expected_skill":"social-copy","tags":["critical"]}
