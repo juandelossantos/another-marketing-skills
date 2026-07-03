@@ -52,6 +52,7 @@ check_interview "showcase" ".showcase/interview.json" "showcase" format tone dur
 check_interview "customer-research" ".customer-research/interview.json" "customer-research" goal existing_assets target_segment deliverable
 check_interview "social" ".social/interview.json" "social-copy" platforms goal pillars existing_content frequency
 check_interview "plan" ".plan/interview.json" "marketing-plan" budget team_size current_channels funding_stage biggest_gap
+check_interview "seo" ".seo/interview.json" "seo-foundation" url topic audience pillars
 
 if [ "$BLOCKED" -gt 0 ]; then
     echo ""

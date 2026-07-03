@@ -20,16 +20,38 @@ Generate search-optimized assets — meta tags, structured data, OG images, and 
 
 Read `.agents/product-marketing.md` for product name, description, and brand voice.
 
-### Step 2: Select Output Type
+### Step 2: Interview — MANDATORY Questions
+
+Ask ALL questions. Record answers. DO NOT assume.
+
+| Question | Why |
+|----------|-----|
+| **Website URL?** | For technical SEO, sitemaps, robots.txt, Search Console |
+| **Main topic/niche?** | For keyword research and clustering |
+| **Target audience?** | For keyword relevance and search intent |
+| **Content pillars?** | For keyword-to-content mapping (3-5 topics) |
+
+After collecting, save and verify:
+
+```bash
+bash scripts/seo-gate.sh --save
+bash scripts/seo-gate.sh
+```
+
+**If exit ≠ 0:** STOP. Go back to questions.
+
+### Step 3: Select Output Type
 
 | Output | What it produces | Use case |
 |--------|-----------------|----------|
 | Meta tags | Title (50-60c) + Description (150-160c) | Every page |
 | Structured data | JSON-LD (SoftwareApp, Article, Organization, FAQ, Breadcrumb) | Rich results |
+| Keywords | Research + cluster + glossary + content map | Content strategy |
+| Technical SEO | Sitemap + robots.txt + canonical | Crawlability |
 | OG image | Image spec (1200x630) + text overlay | Social sharing |
 | Blog intro | H1 + meta + first 100 words | Blog posts |
 
-### Step 3: Generate
+### Step 4: Generate
 
 **Meta tags:**
 - Title: 50-60 chars, primary keyword near start, brand at end
@@ -58,7 +80,7 @@ See `references/structured-data.md` for JSON-LD templates.
 See `references/og-images.md` for image specs.
 See `references/aego-guide.md` for AI search optimization.
 
-### Step 4: Quality Gate
+### Step 5: Quality Gate
 
 ```bash
 bash scripts/content-lint.sh --file <output>
@@ -67,11 +89,14 @@ bash scripts/voice-lint.sh --file <output>
 
 ## Verification Checklist
 
-- [ ] Output type selected (meta, structured data, OG, blog)
+- [ ] SEO GATE: All 4 questions answered (URL, topic, audience, pillars)
+- [ ] Output type selected (meta, structured data, keywords, technical, OG, blog)
 - [ ] Title: 50-60 chars, keyword near start
 - [ ] Description: 150-160 chars, keyword + value + CTA
 - [ ] JSON-LD: valid Schema.org type, all required fields
 - [ ] OG image: 1200x630, readable text, brand colors
+- [ ] Keywords: search intent labeled, clustered by pillar
+- [ ] Technical: sitemap submitted, robots.txt tested
 - [ ] AEO/GEO: natural language, answers direct questions
 - [ ] `bash scripts/content-lint.sh --file <output>` — PASS
 - [ ] `bash scripts/voice-lint.sh --file <output>` — PASS
