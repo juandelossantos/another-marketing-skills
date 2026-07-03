@@ -1,0 +1,4 @@
+{"case_id":"trigger_pos_launch_001","type":"trigger_positive","input":"Create a go-to-market plan for our new product","expected_skill":"launch-plan","description":"User wants GTM plan"}
+{"case_id":"trigger_pos_gtm_002","type":"trigger_positive","input":"I need a launch strategy for next month","expected_skill":"launch-plan","description":"User wants launch strategy"}
+{"case_id":"trigger_pos_timeline_003","type":"trigger_positive","input":"Build a launch timeline for our feature release","expected_skill":"launch-plan","description":"User wants launch timeline"}
+{"case_id":"trigger_neg_social_001","type":"trigger_negative","input":"Write a tweet about our launch","expected_skill":"social-copy","description":"User wants social post, not launch plan"}
