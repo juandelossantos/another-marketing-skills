@@ -20,9 +20,26 @@ Generate 12-month marketing plans using AARRR (Acquisition, Activation, Retentio
 
 Read `.agents/product-marketing.md` and customer-research findings. Load launch-plan if available.
 
-### Step 2: Intake
+### Step 2: Intake — MANDATORY Questions
 
-Ask (if not in context): budget, team size, current channels, funding stage, biggest gap.
+Ask ALL questions. Record answers. DO NOT assume.
+
+| Question | Purpose |
+|----------|---------|
+| **Monthly budget?** | Shapes channel selection |
+| **Team size?** | Determines execution capacity |
+| **Current channels?** | What's working, what's not |
+| **Funding stage?** | Pre-seed, seed, series A |
+| **Biggest gap?** | Single most important fix |
+
+After collecting, save and verify:
+
+```bash
+bash scripts/plan-gate.sh --save
+bash scripts/plan-gate.sh
+```
+
+**If exit ≠ 0:** STOP. Go back to questions.
 
 ### Step 3: Generate Plan
 
